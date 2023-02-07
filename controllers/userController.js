@@ -62,4 +62,43 @@ const deleteUser = async (req, res) => {
     } catch (err) {
         res.json(500).json(err);
     }
-}
+};
+
+const addFriend = async (req, res) => {
+    const { userId, friendId } = req.params;
+    try {
+        const results = await User.findByIdAndUpdate(
+            userId,
+            { $addToSet: { friends: friendsId } },
+            { new: true }
+        ).exec();
+
+        restuls ? res.json(results) : res.json({ message: 'No user found' });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+const deleteFriend = async (req, res) => {
+    const { userId, friendId } = req.params;
+    try {
+        const results = await User.findByIdAndUpdate(
+            userId,
+            { $pull: { friends: friendId } },
+            { new: true }
+        ).exec();
+        res.json(results);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+};
+
+module.exports = {
+    getUsers,
+    getSingleUser,
+    createUser,
+    updatedUser,
+    deleteUser,
+    addFriend,
+    deleteFriend,
+};
