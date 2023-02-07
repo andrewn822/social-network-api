@@ -34,7 +34,7 @@ const createUser = async (req, res) => {
     }
 };
 
-const updatedUser = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const updatedUser = await User.findByIdAndUpdate(
             req.params.userId,
@@ -97,7 +97,7 @@ module.exports = {
     getUsers,
     getSingleUser,
     createUser,
-    updatedUser,
+    updateUser,
     deleteUser,
     addFriend,
     deleteFriend,
