@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-var uniqueValidator = require('mongoose-unqiue-validator');
+var uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = new Schema(
     {
